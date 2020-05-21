@@ -12,7 +12,8 @@ $f3 = Base::instance();
 //Define default route
 $f3->route('GET /', function ()
 {
-    echo "<h1>Hello World</h1>";
+    echo "<h1>Midterm Survey</h1>";
+    echo "<a href='survey'>Take my Midterm Survey</a>";
 });
 
 //Run fat free last
