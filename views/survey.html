@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Midterm Survey</title>
+</head>
+<body>
+    <h1>Midterm Survey</h1>
+
+    <h1>Midterm Survey</h1>
+    <form method="post" action="#">
+        <label>Name
+            <input type="text" name="name">
+        </label>
+
+        <p>Select an option:
+
+            <repeat group="{{ @midtermOptions }}" value="{{ @midOption }}">
+                <label><input type="checkbox" name="mid[]" value="{{ @midOption }}"
+                    >{{ @midOption }}
+                </label>
+            </repeat>
+        </p>
+
+        <input type="submit" value="Place Order">
+    </form>
+
+    <div id="output"></div>
+</body>
+</html>
