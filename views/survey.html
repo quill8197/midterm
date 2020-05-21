@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Midterm Survey</title>
+
+    <style>
+        .err
+        {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h1>Midterm Survey</h1>
     <form method="post" action="#">
         <label>Name
-            <input type="text" name="name">
+            <input type="text" name="name" value="{{ @name }}">
         </label>
         <check if="{{ @errors['name'] }}">
             <span class="err">{{ @errors['name'] }}</span>
