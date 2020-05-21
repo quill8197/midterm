@@ -1,10 +1,12 @@
 <?php
+session_start();
 //Turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 //Require autoload file
 require_once('vendor/autoload.php');
+require_once('model/validate.php');
 
 //Instantiate the F3 Base class
 $f3 = Base::instance();
@@ -33,8 +35,23 @@ $f3->route('GET|POST /survey', function ($f3)
         $f3->set('name', $name);
         $f3->set('mid', $mid);
 
-        //Redirect to Summary
-        $f3->reroute('/summary');
+        //If data is valid
+        if (validForm())
+        {
+            //Write data to Session
+            $_SESSION['name'] = $name;
+            if (empty($mid))
+            {
+                $_SESSION['mid'] = "No checkboxes selected";
+            }
+            else
+            {
+                $_SESSION['mid'] = implode(', ', $mid);
+            }
+
+            //Redirect to Summary
+            $f3->reroute('/summary');
+        }
     }
 
     //Display order form

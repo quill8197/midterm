@@ -9,10 +9,6 @@
     <h3>Thank you for taking the survey {{ @SESSION.name }}</h3><br>
 
     <h3>Your Answers:</h3>
-    <repeat group="{{ @midtermOptions }}" value="{{ @midOption }}">
-        <check if="{{ !empty(@mid) && in_array(@midOption && checked='checked', @mid) }}">
-        </check>
-        >{{ @midOption }}
-    </repeat>
+    <p>Midterm options: {{ @SESSION.mid }}</p>
 </body>
 </html>

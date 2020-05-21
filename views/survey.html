@@ -6,19 +6,26 @@
 </head>
 <body>
     <h1>Midterm Survey</h1>
-
-    <h1>Midterm Survey</h1>
     <form method="post" action="#">
         <label>Name
             <input type="text" name="name">
         </label>
+        <check if="{{ @errors['name'] }}">
+            <span class="err">{{ @errors['name'] }}</span>
+        </check>
 
         <p>Select an option:
+            <check if="{{ @errors['mid'] }}">
+                <span class="err">{{ @errors['mid'] }}</span>
+            </check><br>
 
             <repeat group="{{ @midtermOptions }}" value="{{ @midOption }}">
                 <label><input type="checkbox" name="mid[]" value="{{ @midOption }}"
+                    <check if="{{ !empty(@mid) && in_array(@midOption, @mid) }}">
+                        checked="checked"
+                    </check>
                     >{{ @midOption }}
-                </label>
+                </label><br>
             </repeat>
         </p>
 
