@@ -20,11 +20,33 @@ $f3->route('GET /', function ()
     echo "<a href='survey'>Take my Midterm Survey</a>";
 });
 
-$f3->route('GET|POST /survey', function ()
+$f3->route('GET|POST /survey', function ($f3)
 {
+    //If form has been submitted, validate
+    if(!empty($_POST))
+    {
+        //Get data from form
+        $name = $_POST['name'];
+        $mid = $_POST['mid'];
+
+        //Add data to hive
+        $f3->set('name', $name);
+        $f3->set('mid', $mid);
+
+        //Redirect to Summary
+        $f3->reroute('/summary');
+    }
+
     //Display order form
     $view = new Template();
     echo $view->render('views/survey.html');
+});
+
+$f3->route('GET /summary', function ()
+{
+    //Display order form
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 //Run fat free last
